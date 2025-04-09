@@ -3,6 +3,7 @@ package com.DerickPederzini.placar
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -10,6 +11,19 @@ import com.DerickPederzini.placar.databinding.ActivityPlayerBinding
 
 class PlayerActivity : AppCompatActivity() {
     private lateinit var binding : ActivityPlayerBinding
+
+    private val previewRequest = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.resultCode == RESULT_OK) {
+            val lastResult = getString(R.string.message_to_share,
+                it.data?.getStringExtra(KEY_RESULT_EXTRA_PLAYER_ONE_NAME),
+                it.data?.getStringExtra(KEY_RESULT_EXTRA_PLAYER_TWO_NAME),
+                it.data?.getIntExtra(KEY_RESULT_EXTRA_PLAYER_ONE_SCORE, 0),
+                it.data?.getIntExtra(KEY_RESULT_EXTRA_PLAYER_TWO_SCORE, 0))
+            binding.tvLastGameText.text = lastResult
+        }
+
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,8 +36,10 @@ class PlayerActivity : AppCompatActivity() {
             val nextScreen = Intent(this, MainActivity::class.java)
             nextScreen.putExtra("PLAYER1", binding.etPlayer1.text.toString())
             nextScreen.putExtra("PLAYER2", binding.etPlayer2.text.toString())
+            previewRequest.launch(nextScreen)
             startActivity(nextScreen)
         }
+
 
     }
 }

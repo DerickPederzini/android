@@ -58,7 +58,7 @@
 
     <EditText
         android:id="@+id/etPlayer2"
-        playout_constraintTop_toBottomOf="@+id/editTextText"
+        android:playout_constraintTop_toBottomOf="@+id/editTextText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -67,6 +67,16 @@
         app:layout_constraintEnd_toEndOf="@+id/etPlayer1"
         app:layout_constraintStart_toStartOf="@+id/etPlayer1"
         app:layout_constraintTop_toBottomOf="@+id/etPlayer1" />
+
+    <TextView
+        android:id="@+id/tvLastGameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/message_to_share"
+        app:layout_constraintEnd_toEndOf="@+id/etPlayer2"
+        app:layout_constraintStart_toStartOf="@+id/etPlayer2"
+        app:layout_constraintTop_toBottomOf="@+id/etPlayer2" />
 
     <TextView
         android:id="@+id/textView3"
@@ -91,4 +101,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
