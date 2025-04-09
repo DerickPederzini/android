@@ -58,7 +58,6 @@
 
     <EditText
         android:id="@+id/etPlayer2"
-        android:playout_constraintTop_toBottomOf="@+id/editTextText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:ems="10"

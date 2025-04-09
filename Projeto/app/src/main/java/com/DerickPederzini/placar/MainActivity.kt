@@ -21,10 +21,10 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
+        handleFinishMatch()
         setUpExtras(savedInstanceState)
         handleScore()
 
-        handleFinishMatch()
     }
 
     private fun setUpExtras(savedInstanceState: Bundle?){
